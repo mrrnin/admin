@@ -1,198 +1,1115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Young Life University — Where the Rivers Meet</title>
-<meta name="description" content="Young Life University in Phnom Penh — a bilingual Khmer-English university offering STEM, Humanities and Arts pathways.">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Younglife University, Cambodia</title>
+
+    <!-- Google Fonts: Inter for English, Kantumruy Pro for Khmer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for smooth scrolling and selections */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Apply Khmer font when language is changed */
+        body.lang-km {
+            font-family: 'Kantumruy Pro', sans-serif;
+        }
+
+        ::selection {
+            background-color: #84cc16;
+            color: white;
+        }
+
+        /* Chatbot animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-anim {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .typing-dot {
+            animation: typing 1.4s infinite both;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Fancy Glow Animations */
+        @keyframes ambientGlow {
+
+            0%,
+            100% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.1) translate(-20px, 20px);
+                opacity: 0.5;
+            }
+        }
+
+        .animate-ambient-1 {
+            animation: ambientGlow 8s ease-in-out infinite;
+        }
+
+        .animate-ambient-2 {
+            animation: ambientGlow 10s ease-in-out infinite reverse;
+            animation-delay: 2s;
+        }
+
+        /* Glassmorphism utility */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body>
 
-<header class="site-header">
-  <nav class="wrap nav">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text">
-        <span class="en">Young Life University</span>
-        <span class="km">សកលវិទ្យាល័យជីវិតយុវជន</span>
-      </span>
-    </a>
-    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="academics.html">Academics</a></li>
-      <li><a href="admissions.html">Admissions</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen overflow-x-hidden">
 
-<main>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-5">
+        <div class="max-w-[90rem] mx-auto px-6 lg:px-8 flex justify-between items-center">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <p class="km-line">រៀនដើម្បីអនាគត — learn for the future</p>
-        <h1>Where the four <em>rivers</em> of learning meet.</h1>
-        <p class="lede">Chaktomuk High School is a bilingual Khmer-English school in Phnom Penh for grades 7–12, built around the belief that a strong education, like the city it stands in, draws its strength from many currents flowing into one.</p>
-        <div class="hero-actions">
-          <a class="btn btn-gold" href="admissions.html">Start an application</a>
-          <a class="btn btn-outline" href="about.html">About the school</a>
+            <!-- Brand/Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img class="ylu-logo w-10 h-10 object-contain drop-shadow-sm" alt="Younglife University, Cambodia">
+                <div id="nav-text" class="flex flex-col text-white transition-colors duration-300">
+                    <div class="flex items-baseline gap-1">
+                        <span class="font-bold text-xl tracking-tight">younglife</span>
+                        <span class="text-lime-500 font-semibold text-sm" data-i18n="nav_university">University</span>
+                    </div>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase opacity-80"
+                        data-i18n="nav_cambodia">Cambodia</span>
+                </div>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-6 font-medium text-sm">
+                <a href="#" id="link-about" class="text-white hover:text-lime-400 transition-colors nav-link"
+                    data-i18n="nav_about">About YLU</a>
+                <a href="#programs" class="text-white hover:text-lime-400 transition-colors nav-link"
+                    data-i18n="nav_programs">Programs</a>
+                <a href="#community" class="text-white hover:text-lime-400 transition-colors nav-link"
+                    data-i18n="nav_community">Our Community</a>
+                <a href="#news" class="text-white hover:text-lime-400 transition-colors nav-link"
+                    data-i18n="nav_news">News & Events</a>
+                <a href="#contact" class="text-white hover:text-lime-400 transition-colors nav-link"
+                    data-i18n="nav_contact">Contact</a>
+
+                <!-- Divider -->
+                <div class="w-px h-4 bg-white/30" id="nav-divider"></div>
+
+                <!-- Language Toggle -->
+                <button onclick="toggleLanguage()"
+                    class="flex items-center gap-1.5 text-white hover:text-lime-400 transition-colors nav-link"
+                    id="lang-btn-desktop">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    <span class="font-semibold text-xs tracking-wider" id="lang-text-desktop">EN / ខ្មែរ</span>
+                </button>
+
+                <button
+                    class="bg-lime-500 hover:bg-lime-400 text-slate-900 px-6 py-2.5 rounded-full font-bold transition-all shadow-[0_0_15px_rgba(132,204,22,0.5)] hover:shadow-[0_0_25px_rgba(132,204,22,0.7)] hover:-translate-y-0.5"
+                    data-i18n="btn_apply">
+                    Apply Now
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 bg-white/50 backdrop-blur-md rounded-full">
+                <svg id="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg id="icon-close" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
         </div>
-      </div>
-      <div>
-        <svg class="skyline" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylised silhouette of five stepped temple towers">
-          <defs>
-            <path id="tower-path" d="M-55,380 L-55,340 L-42,340 L-42,300 L-30,300 L-30,250 L-18,250 L-18,200 L-6,200 L0,120 L6,200 L18,200 L18,250 L30,250 L30,300 L42,300 L42,340 L55,340 L55,380 Z"/>
-          </defs>
-          <use class="back" href="#tower-path" transform="translate(95,266) scale(0.3)"/>
-          <use class="back" href="#tower-path" transform="translate(505,266) scale(0.3)"/>
-          <use href="#tower-path" transform="translate(40,228) scale(0.4)"/>
-          <use href="#tower-path" transform="translate(150,144.4) scale(0.62)"/>
-          <use href="#tower-path" transform="translate(300,-19) scale(1.05)"/>
-          <use href="#tower-path" transform="translate(450,144.4) scale(0.62)"/>
-          <use href="#tower-path" transform="translate(560,228) scale(0.4)"/>
-          <rect x="0" y="380" width="600" height="9" fill="var(--gold)"/>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-t border-slate-100 flex-col py-4 px-6 gap-4">
+            <a href="#" id="mobile-about-link" class="font-medium text-slate-700 hover:text-lime-500 block py-2"
+                data-i18n="nav_about">About YLU</a>
+            <a href="#programs" class="font-medium text-slate-700 hover:text-lime-500 block py-2"
+                data-i18n="nav_programs">Programs</a>
+            <a href="#community" class="font-medium text-slate-700 hover:text-lime-500 block py-2"
+                data-i18n="nav_community">Our Community</a>
+            <a href="#news" class="font-medium text-slate-700 hover:text-lime-500 block py-2" data-i18n="nav_news">News
+                & Events</a>
+            <a href="#contact" class="font-medium text-slate-700 hover:text-lime-500 block py-2"
+                data-i18n="nav_contact">Contact</a>
+
+            <div class="h-px w-full bg-slate-200 my-1"></div>
+
+            <button onclick="toggleLanguage()"
+                class="flex items-center gap-2 font-medium text-slate-700 hover:text-lime-500 py-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                </svg>
+                <span id="lang-text-mobile">Switch to ខ្មែរ</span>
+            </button>
+
+            <button
+                class="bg-lime-500 text-slate-900 px-5 py-3 rounded-xl font-bold mt-2 w-full shadow-lg shadow-lime-500/30"
+                data-i18n="btn_apply">
+                Apply Now
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative flex-grow flex items-center justify-center min-h-[100vh] pt-20 overflow-hidden bg-slate-950">
+
+        <!-- Minimalist Galaxy Canvas & Gradient Orbs -->
+        <div class="absolute inset-0 z-0">
+            <canvas id="galaxy-canvas" class="w-full h-full opacity-70"></canvas>
+
+            <!-- Ambient Glowing Orbs -->
+            <div
+                class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-lime-500/10 rounded-full blur-[100px] mix-blend-screen animate-ambient-1 pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen animate-ambient-2 pointer-events-none">
+            </div>
+
+            <!-- Smooth fade into the next section -->
+            <div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center pb-20">
+            <div
+                class="p-8 md:p-12 rounded-[2.5rem] mb-8 transform hover:scale-105 transition-transform duration-500 glass-card relative overflow-hidden group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-lime-400/0 via-lime-400/10 to-lime-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                </div>
+
+                <div class="flex flex-col items-center relative z-10">
+                    <img class="ylu-logo w-28 h-28 md:w-36 md:h-36 object-contain drop-shadow-[0_0_15px_rgba(132,204,22,0.3)] mb-6"
+                        alt="Younglife University, Cambodia">
+                    <div class="flex flex-col items-center">
+                        <div class="flex flex-wrap justify-center items-baseline gap-2 md:gap-3 mb-1">
+                            <h1
+                                class="text-4xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400 drop-shadow-sm">
+                                younglife</h1>
+                            <span
+                                class="text-2xl md:text-5xl font-bold text-lime-400 drop-shadow-[0_0_10px_rgba(132,204,22,0.4)]"
+                                data-i18n="nav_university">University</span>
+                        </div>
+                        <div class="flex items-center gap-4 w-full mt-2">
+                            <div
+                                class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/50 to-lime-500 rounded-full">
+                            </div>
+                            <h2
+                                class="text-lg md:text-2xl font-bold tracking-[0.4em] text-white/90 uppercase my-2 drop-shadow-md">
+                                <span class="text-lime-400" data-i18n="nav_cambodia">Cambodia</span>
+                            </h2>
+                            <div
+                                class="h-[1px] flex-grow bg-gradient-to-l from-transparent via-white/50 to-blue-500 rounded-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-lg md:text-xl text-slate-300 font-medium max-w-2xl mx-auto mb-12 leading-relaxed drop-shadow-md"
+                data-i18n="hero_desc">
+                Empowering the next generation of leaders in Cambodia through faith, excellent education, and deeply
+                rooted community.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5">
+                <button onclick="document.getElementById('link-about').click()"
+                    class="group bg-lime-500 hover:bg-lime-400 text-slate-950 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(132,204,22,0.4)] hover:shadow-[0_0_30px_rgba(132,204,22,0.6)] flex items-center justify-center gap-2 hover:-translate-y-1">
+                    <span data-i18n="btn_vision">Discover Our Vision</span>
+                    <svg class="group-hover:translate-x-1.5 transition-transform duration-300" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                <button onclick="document.getElementById('chatbot-toggle').click()"
+                    class="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 hover:-translate-y-1 hover:border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span data-i18n="btn_assistant">Ask Assistant</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pillars Section -->
+    <section class="bg-slate-50 relative z-20 pb-24" id="programs">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 -mt-20">
+            <div class="text-center mb-16 pt-8">
+                <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-lime-100/80 text-lime-700 font-bold text-sm tracking-widest uppercase mb-4 shadow-sm border border-lime-200 backdrop-blur-sm"
+                    data-i18n="why_choose">Why Choose Us</div>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight"
+                    data-i18n="built_foundation">Built on Strong Foundations</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative z-30">
+                <!-- Academic Excellence -->
+                <div
+                    class="glass-card !bg-white/80 rounded-[2rem] p-10 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner border border-blue-100 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4" data-i18n="card1_title">Academic Excellence</h4>
+                    <p class="text-slate-600 leading-relaxed font-medium" data-i18n="card1_desc">
+                        Rigorous curriculum designed to challenge students and prepare them for impactful careers
+                        globally and locally.
+                    </p>
+                </div>
+
+                <!-- Faith & Purpose -->
+                <div
+                    class="glass-card !bg-white/80 rounded-[2rem] p-10 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(132,204,22,0.2)] hover:-translate-y-2 transition-all duration-300 group border-lime-100/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-lime-400/5 rounded-full blur-[40px] -mr-10 -mt-10">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-lime-400 to-lime-300 text-slate-900 rounded-2xl flex items-center justify-center mb-8 shadow-[0_5px_15px_rgba(132,204,22,0.3)] group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative z-10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4 relative z-10" data-i18n="card2_title">Faith &
+                        Purpose</h4>
+                    <p class="text-slate-600 leading-relaxed font-medium relative z-10" data-i18n="card2_desc">
+                        Rooted in YoungLife's mission, we integrate faith and learning to help students discover their
+                        true purpose.
+                    </p>
+                </div>
+
+                <!-- Vibrant Community -->
+                <div
+                    class="glass-card !bg-white/80 rounded-[2rem] p-10 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-rose-500/10 hover:-translate-y-2 transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-rose-100 to-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner border border-rose-100 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4" data-i18n="card3_title">Vibrant Community</h4>
+                    <p class="text-slate-600 leading-relaxed font-medium" data-i18n="card3_desc">
+                        A supportive campus environment where lifelong friendships are forged and leadership skills are
+                        nurtured.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 text-sm border-t border-slate-900 relative z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img class="ylu-logo w-8 h-8 object-contain opacity-80" alt="Younglife University, Cambodia">
+                <span class="font-semibold text-white" data-i18n="footer_brand">Younglife University, Cambodia</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-lime-400 transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
+                <a href="#" class="hover:text-lime-400 transition-colors" data-i18n="footer_terms">Terms of Service</a>
+                <a href="#contact" class="hover:text-lime-400 transition-colors" data-i18n="nav_contact">Contact</a>
+            </div>
+            <p data-i18n="footer_copyright">© 2026 Younglife University, Cambodia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- "About YLU" Modal (Completely Updated Editorial Design) -->
+    <div id="story-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300"
+            onclick="closeModal()"></div>
+
+        <div id="modal-content"
+            class="relative bg-white w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-[2.5rem] shadow-2xl p-0 transform scale-95 opacity-0 transition-all duration-300 border border-slate-100 flex flex-col">
+
+            <!-- Close Floating Button -->
+            <button onclick="closeModal()"
+                class="absolute top-5 right-5 p-3 bg-white/80 backdrop-blur-md hover:bg-slate-100 rounded-full text-slate-700 transition-all z-30 shadow-md border border-slate-200 hover:scale-105"
+                aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Modal Hero / Banner -->
+            <div class="relative bg-slate-950 text-white px-8 pt-16 pb-20 sm:px-16 sm:pt-20 sm:pb-24 overflow-hidden">
+                <!-- Ambient back-lighting -->
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-lime-500/15 rounded-full blur-[100px] pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/15 rounded-full blur-[90px] pointer-events-none">
+                </div>
+
+                <div class="relative z-10 max-w-3xl flex flex-col items-start animate-fade-in-up">
+                    <div class="flex items-center gap-3.5 mb-6">
+                        <img class="ylu-logo w-12 h-12 object-contain drop-shadow" alt="Younglife University, Cambodia">
+                        <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-lime-400 font-semibold text-xs tracking-wider uppercase"
+                            data-i18n="badge_cambodia">
+                            Younglife University, Cambodia
+                        </div>
+                    </div>
+
+                    <h2 class="text-4xl sm:text-6xl font-black tracking-tight mb-4 text-white"
+                        data-i18n="modal_hero_title">
+                        About YLU
+                    </h2>
+
+                    <p class="text-xl sm:text-2xl text-slate-300 font-medium leading-relaxed"
+                        data-i18n="modal_hero_subtitle">
+                        Empowering university students to learn, grow, lead, and serve.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Content Editorial Flow -->
+            <div class="px-8 py-12 sm:px-16 sm:py-16 space-y-16 text-slate-700 bg-white">
+
+                <!-- Section 1: Who We Are (Asymmetrical Editorial Grid) -->
+                <div class="grid md:grid-cols-12 gap-8 items-start border-b border-slate-100 pb-16">
+                    <div class="md:col-span-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-lime-500"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400"
+                                data-i18n="tag_identity">Our Identity</span>
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="modal_who_title">
+                            Who We Are
+                        </h3>
+                    </div>
+
+                    <div class="md:col-span-8 space-y-5 text-lg sm:text-xl leading-relaxed text-slate-600 font-normal">
+                        <p data-i18n="modal_who_p1">
+                            YLU (Younglife University) is a youth-focused initiative under Young Life Cambodia (YLC),
+                            dedicated to empowering university students in Cambodia.
+                        </p>
+                        <p data-i18n="modal_who_p2">
+                            YLU provides opportunities for students to strengthen their learning abilities, develop
+                            leadership skills, improve their language and digital skills, build strong character, and
+                            explore the Gospel in a supportive community.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 2: Our Story (Large Typographic Founding Date Callout) -->
+                <div class="grid md:grid-cols-12 gap-8 items-start border-b border-slate-100 pb-16">
+                    <div class="md:col-span-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400"
+                                data-i18n="tag_history">Our Journey</span>
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="modal_story_title">
+                            Our Story
+                        </h3>
+                    </div>
+
+                    <div class="md:col-span-8 space-y-6">
+                        <!-- Visually Prominent Founding Date Badge -->
+                        <div
+                            class="p-6 sm:p-8 rounded-3xl bg-slate-950 text-white relative overflow-hidden shadow-lg border border-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div
+                                class="absolute -right-6 -bottom-6 w-36 h-36 bg-lime-500/10 rounded-full blur-[40px] pointer-events-none">
+                            </div>
+
+                            <div>
+                                <span class="text-xs uppercase tracking-[0.25em] text-slate-400 font-bold block mb-1"
+                                    data-i18n="founding_label">Founding Date</span>
+                                <div class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-300 tracking-tight"
+                                    data-i18n="modal_founding_date">
+                                    20 July 2024
+                                </div>
+                            </div>
+
+                            <div
+                                class="px-4 py-2 rounded-full bg-white/10 text-xs font-semibold text-slate-300 uppercase tracking-wider border border-white/10">
+                                Established
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-lg sm:text-xl leading-relaxed text-slate-600">
+                            <p data-i18n="modal_story_p1">
+                                YLU was established on 20 July 2024 with a vision to create a meaningful space where
+                                university students can learn, grow, connect, and develop both their skills and
+                                character.
+                            </p>
+                            <p data-i18n="modal_story_p2">
+                                Since its beginning, YLU has been working to support students through education,
+                                leadership development, practical skills, and faith-based activities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: What We Believe (With Memorable Highlight Callout) -->
+                <div class="grid md:grid-cols-12 gap-8 items-start">
+                    <div class="md:col-span-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400"
+                                data-i18n="tag_faith">Core Conviction</span>
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight"
+                            data-i18n="modal_believe_title">
+                            What We Believe
+                        </h3>
+                    </div>
+
+                    <div class="md:col-span-8 space-y-8">
+                        <p class="text-lg sm:text-xl leading-relaxed text-slate-600 font-normal"
+                            data-i18n="modal_believe_p1">
+                            We believe university life is not only about academic achievement. It is also an opportunity
+                            to develop skills, character, leadership, and faith that can shape students’ lives and their
+                            contribution to society.
+                        </p>
+
+                        <!-- High-Impact Editorial Display Statement -->
+                        <div
+                            class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white relative overflow-hidden shadow-2xl border border-slate-800">
+                            <div
+                                class="absolute top-0 right-1/4 w-48 h-48 bg-lime-400/10 rounded-full blur-[60px] pointer-events-none">
+                            </div>
+
+                            <span class="text-xs font-bold uppercase tracking-[0.3em] text-lime-400/90 block mb-3"
+                                data-i18n="callout_mission">
+                                Our Defining Purpose
+                            </span>
+
+                            <div class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight"
+                                data-i18n="modal_highlight">
+                                Learn. Grow.<br class="hidden sm:inline"> Lead. Serve.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="px-8 py-6 sm:px-16 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-medium" data-i18n="footer_modal_brand">Younglife University,
+                    Cambodia</span>
+                <button onclick="closeModal()"
+                    class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3 rounded-full font-bold text-sm transition-all shadow-sm hover:shadow-md"
+                    data-i18n="btn_close_story">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot UI (Floating Bottom Right) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="chat-window"
+            class="hidden w-80 sm:w-96 bg-white rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-slate-100 mb-4 overflow-hidden flex flex-col h-[500px] max-h-[70vh]">
+            <div
+                class="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-4 flex justify-between items-center font-semibold">
+                <div class="flex items-center gap-2">
+                    <div class="bg-lime-500 p-1.5 rounded-full text-slate-900">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <span data-i18n="chat_title">University Assistant</span>
+                </div>
+                <button id="chat-close"
+                    class="hover:bg-slate-700 rounded-full p-1.5 transition-colors text-slate-300 hover:text-white">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="chat-messages" class="flex-grow p-4 overflow-y-auto flex flex-col gap-3 bg-slate-50">
+                <div class="bg-white border border-slate-100 text-slate-700 p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] text-sm shadow-sm message-anim font-medium"
+                    data-i18n="chat_welcome">
+                    Hello! I'm the Younglife University, Cambodia AI assistant. Do you have any questions about our
+                    programs, campus life, or admissions?
+                </div>
+            </div>
+
+            <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
+                <input type="text" id="chat-input" placeholder="Ask a question..."
+                    class="flex-grow bg-slate-100 rounded-full px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-lime-500 transition-all font-medium text-slate-700"
+                    autocomplete="off">
+                <button id="chat-send"
+                    class="bg-slate-900 text-lime-400 rounded-full p-2 hover:bg-slate-800 hover:scale-105 transition-all flex items-center justify-center w-10 h-10 shadow-md">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <button id="chatbot-toggle"
+            class="w-14 h-14 bg-slate-900 text-lime-400 rounded-full shadow-[0_5px_20px_rgba(15,23,42,0.4)] flex items-center justify-center hover:scale-110 hover:bg-slate-800 transition-all focus:outline-none z-50 border border-slate-800">
+            <svg id="chat-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <svg id="chat-icon-close" class="hidden" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Translation Data & JavaScript -->
+    <script>
+        // --- EMBEDDED HIGH-RES VECTOR YLU CAMBODIA LOGO ---
+        // Authentic Young Life 'YL' geometry with Cambodia flag & Angkor Wat
+        const EMBEDDED_YLU_LOGO = "data:image/svg+xml;utf8," + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 310" width="100%" height="100%">
+            <defs>
+                <!-- Y letterform clip -->
+                <clipPath id="y-clip">
+                    <path d="M 0 62 L 54 8 L 132 86 L 132 284 L 80 284 L 80 142 L 0 62 Z"/>
+                </clipPath>
+                <!-- L letterform clip -->
+                <clipPath id="l-clip">
+                    <path d="M 148 86 L 202 32 L 202 232 L 244 232 L 270 258 L 244 284 L 148 284 Z"/>
+                </clipPath>
+            </defs>
+
+            <!-- 'Y' Glyph -->
+            <g clip-path="url(#y-clip)">
+                <!-- Top Flag Blue -->
+                <rect x="-30" y="-10" width="200" height="96" fill="#032ea1"/>
+                <!-- Middle Flag Red -->
+                <rect x="-30" y="86" width="200" height="124" fill="#ce1126"/>
+                <!-- Bottom Flag Blue -->
+                <rect x="-30" y="210" width="200" height="85" fill="#032ea1"/>
+                
+                <!-- White Angkor Wat Silhouette in Red band -->
+                <g fill="#ffffff" transform="translate(48, 115) scale(0.48)">
+                    <!-- Central Tower -->
+                    <polygon points="50,0 44,14 47,14 43,26 48,26 42,42 58,42 52,26 57,26 53,14 56,14"/>
+                    <!-- Left Tower -->
+                    <polygon points="26,10 21,22 24,22 20,32 24,32 19,44 33,44 28,32 32,32 28,22 31,22"/>
+                    <!-- Right Tower -->
+                    <polygon points="74,10 69,22 72,22 68,32 72,32 67,44 81,44 76,32 80,32 76,22 79,22"/>
+                    <!-- Base gallery / tiers -->
+                    <rect x="12" y="44" width="76" height="6" rx="1"/>
+                    <rect x="6" y="50" width="88" height="10" rx="1"/>
+                    <!-- Gateway doors -->
+                    <rect x="46" y="53" width="8" height="7" fill="#ce1126"/>
+                    <rect x="24" y="54" width="6" height="6" fill="#ce1126"/>
+                    <rect x="70" y="54" width="6" height="6" fill="#ce1126"/>
+                </g>
+
+                <!-- Slate-Blue diagonal cut at base of Y -->
+                <polygon points="76,284 132,228 132,284" fill="#536e9d"/>
+            </g>
+
+            <!-- 'L' Glyph -->
+            <g clip-path="url(#l-clip)">
+                <!-- Slate-blue base for full L -->
+                <rect x="140" y="20" width="140" height="270" fill="#536e9d"/>
+                <!-- Upper angled flag accents -->
+                <polygon points="148,86 202,32 202,68 148,122" fill="#032ea1"/>
+                <polygon points="148,122 202,68 202,112 148,166" fill="#ce1126"/>
+            </g>
         </svg>
-      </div>
-    </div>
-  </section>
+        `);
 
-  <!-- STATS -->
-  <div class="wrap" style="margin-top: -1px;">
-    <div class="stats">
-      <div class="stat"><span class="n">1998</span><span class="l">Founded</span></div>
-      <div class="stat"><span class="n">742</span><span class="l">Students, grades 7–12</span></div>
-      <div class="stat"><span class="n">3</span><span class="l">Academic pathways</span></div>
-      <div class="stat"><span class="n">18</span><span class="l">Clubs &amp; teams</span></div>
-    </div>
-  </div>
+        // Initialize and bind logo across all images
+        function initializeLogos() {
+            document.querySelectorAll('.ylu-logo').forEach(img => {
+                // Preload embedded logo directly so it never fails in sandbox/preview
+                img.src = EMBEDDED_YLU_LOGO;
 
-  <div class="divider" role="presentation"></div>
+                // Fallback attempt to local project asset if available on user device
+                const localTest = new Image();
+                localTest.onload = () => { img.src = "Untitled design.jpg"; };
+                localTest.src = "Untitled design.jpg";
+            });
+        }
+        initializeLogos();
 
-  <!-- HIGHLIGHTS -->
-  <section>
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Why families choose Chaktomuk</p>
-        <h2>Rigorous, bilingual, and rooted in Phnom Penh.</h2>
-        <p>Every student studies in both Khmer and English from Grade 7 onward, then chooses a pathway in Grade 10 that matches where they want to go next — university, technical study, or the workforce.</p>
-      </div>
-      <div class="grid cols-3">
-        <div class="card">
-          <span class="tag">Curriculum</span>
-          <h3>Bilingual by design</h3>
-          <p>Core subjects are taught in Khmer with an English-medium track running alongside, so students graduate fluent in both academic registers.</p>
-        </div>
-        <div class="card gold">
-          <span class="tag">Pathways</span>
-          <h3>Three routes from Grade 10</h3>
-          <p>STEM, Humanities &amp; Social Science, and Applied Arts &amp; Design — each with its own labs, electives, and capstone project.</p>
-        </div>
-        <div class="card brick">
-          <span class="tag">Community</span>
-          <h3>A campus that stays open</h3>
-          <p>Library and computer labs run until 6pm on weekdays, and Saturday clubs keep the campus active outside the regular timetable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        // --- BILINGUAL TRANSLATIONS ---
+        const translations = {
+            en: {
+                nav_about: "About YLU",
+                nav_programs: "Programs",
+                nav_community: "Our Community",
+                nav_news: "News & Events",
+                nav_contact: "Contact",
+                nav_university: "University",
+                nav_cambodia: "Cambodia",
+                btn_apply: "Apply Now",
+                hero_desc: "Empowering the next generation of leaders in Cambodia through faith, excellent education, and deeply rooted community.",
+                btn_vision: "Discover Our Vision",
+                btn_assistant: "Ask Assistant",
+                why_choose: "Why Choose Us",
+                built_foundation: "Built on Strong Foundations",
+                card1_title: "Academic Excellence",
+                card1_desc: "Rigorous curriculum designed to challenge students and prepare them for impactful careers globally and locally.",
+                card2_title: "Faith & Purpose",
+                card2_desc: "Rooted in YoungLife's mission, we integrate faith and learning to help students discover their true purpose.",
+                card3_title: "Vibrant Community",
+                card3_desc: "A supportive campus environment where lifelong friendships are forged and leadership skills are nurtured.",
+                footer_brand: "Younglife University, Cambodia",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms of Service",
+                footer_copyright: "© 2026 Younglife University, Cambodia. All rights reserved.",
 
-  <!-- PULL QUOTE -->
-  <div class="wrap">
-    <div class="pull">
-      <p>&ldquo;We didn't want a school that taught two languages side by side. We wanted one where Khmer and English think together — in the same lab report, the same debate, the same exam.&rdquo;</p>
-      <cite>— Principal, Chaktomuk High School</cite>
-    </div>
-  </div>
+                // About YLU Modal Copy
+                badge_cambodia: "Younglife University, Cambodia",
+                modal_hero_title: "About YLU",
+                modal_hero_subtitle: "Empowering university students to learn, grow, lead, and serve.",
+                tag_identity: "Our Identity",
+                modal_who_title: "Who We Are",
+                modal_who_p1: "YLU (Younglife University) is a youth-focused initiative under Young Life Cambodia (YLC), dedicated to empowering university students in Cambodia.",
+                modal_who_p2: "YLU provides opportunities for students to strengthen their learning abilities, develop leadership skills, improve their language and digital skills, build strong character, and explore the Gospel in a supportive community.",
+                tag_history: "Our Journey",
+                modal_story_title: "Our Story",
+                founding_label: "Founding Date",
+                modal_founding_date: "20 July 2024",
+                modal_story_p1: "YLU was established on 20 July 2024 with a vision to create a meaningful space where university students can learn, grow, connect, and develop both their skills and character.",
+                modal_story_p2: "Since its beginning, YLU has been working to support students through education, leadership development, practical skills, and faith-based activities.",
+                tag_faith: "Core Conviction",
+                modal_believe_title: "What We Believe",
+                modal_believe_p1: "We believe university life is not only about academic achievement. It is also an opportunity to develop skills, character, leadership, and faith that can shape students’ lives and their contribution to society.",
+                callout_mission: "Our Defining Purpose",
+                modal_highlight: "Learn. Grow.<br class=\"hidden sm:inline\"> Lead. Serve.",
+                footer_modal_brand: "Younglife University, Cambodia",
+                btn_close_story: "Close",
 
-  <div class="divider" role="presentation"></div>
+                // Chatbot Strings
+                chat_title: "University Assistant",
+                chat_welcome: "Hello! I'm the Younglife University, Cambodia AI assistant. Do you have any questions about our programs, campus life, or admissions?",
+                chat_placeholder: "Ask a question..."
+            },
+            km: {
+                nav_about: "អំពី YLU",
+                nav_programs: "កម្មវិធីសិក្សា",
+                nav_community: "សហគមន៍របស់យើង",
+                nav_news: "ព័ត៌មាន និងព្រឹត្តិការណ៍",
+                nav_contact: "ទំនាក់ទំនង",
+                nav_university: "សាកលវិទ្យាល័យ",
+                nav_cambodia: "កម្ពុជា",
+                btn_apply: "ដាក់ពាក្យឥឡូវនេះ",
+                hero_desc: "ផ្តល់សិទ្ធិអំណាចដល់អ្នកដឹកនាំជំនាន់ក្រោយនៅកម្ពុជា តាមរយៈជំនឿ ការអប់រំដ៏ល្អឥតខ្ចោះ និងសហគមន៍ដែលចាក់ឫសយ៉ាងជ្រៅ។",
+                btn_vision: "ស្វែងយល់ពីចក្ខុវិស័យរបស់យើង",
+                btn_assistant: "សួរជំនួយការ",
+                why_choose: "ហេតុអ្វីជ្រើសរើសយើង",
+                built_foundation: "កសាងនៅលើមូលដ្ឋានគ្រឹះដ៏រឹងមាំ",
+                card1_title: "ឧត្តមភាពផ្នែកសិក្សា",
+                card1_desc: "កម្មវិធីសិក្សាដែលត្រូវបានរចនាឡើងដើម្បីអភិវឌ្ឍសមត្ថភាពសិស្ស និងរៀបចំពួកគេសម្រាប់អាជីពដែលមានឥទ្ធិពល។",
+                card2_title: "ជំនឿ និងគោលបំណង",
+                card2_desc: "យើងរួមបញ្ចូលជំនឿ និងការសិក្សាដើម្បីជួយសិស្សរកឃើញគោលបំណងពិតរបស់ពួកគេក្នុងជីវិត។",
+                card3_title: "សហគមន៍ដ៏រស់រវើក",
+                card3_desc: "បរិយាកាសសិក្សាដែលគាំទ្រ ដែលមិត្តភាពយូរអង្វែងត្រូវបានបង្កើតឡើង ហើយភាពជាអ្នកដឹកនាំត្រូវបានបណ្តុះបណ្តាល។",
+                footer_brand: "សាកលវិទ្យាល័យ យុវជនជីវិត កម្ពុជា",
+                footer_privacy: "គោលការណ៍ឯកជនភាព",
+                footer_terms: "លក្ខខណ្ឌនៃសេវាកម្ម",
+                footer_copyright: "© 2026 សាកលវិទ្យាល័យ យុវជនជីវិត កម្ពុជា។ រក្សាសិទ្ធិគ្រប់យ៉ាង។",
 
-  <!-- NEWS -->
-  <section class="section-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">From the campus</p>
-        <h2>Announcements this term.</h2>
-      </div>
-      <div class="grid cols-3">
-        <div class="card">
-          <span class="tag">Admissions</span>
-          <h3>Grade 7 &amp; Grade 10 entry exams open</h3>
-          <p>Registration for the January entry exams closes on 20 September. See the Admissions page for the full schedule and requirements.</p>
-        </div>
-        <div class="card">
-          <span class="tag">STEM Pathway</span>
-          <h3>Robotics team places 2nd nationally</h3>
-          <p>The Grade 11 robotics team returned from the National Schools Robotics Cup with a second-place finish in the autonomous navigation event.</p>
-        </div>
-        <div class="card">
-          <span class="tag">Arts</span>
-          <h3>Student exhibition: "Confluence"</h3>
-          <p>The Applied Arts pathway opens its end-of-term exhibition in the main hall, running the last week of the semester.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+                // About YLU Modal Copy
+                badge_cambodia: "សាកលវិទ្យាល័យ យុវជនជីវិត កម្ពុជា",
+                modal_hero_title: "អំពី YLU",
+                modal_hero_subtitle: "ផ្តល់សិទ្ធិអំណាចដល់និស្សិតសាកលវិទ្យាល័យដើម្បីរៀនសូត្រ លូតលាស់ ដឹកនាំ និងបម្រើ។",
+                tag_identity: "អត្តសញ្ញាណរបស់យើង",
+                modal_who_title: "អំពីពួកយើង",
+                modal_who_p1: "YLU (Younglife University) គឺជាគំនិតផ្តួចផ្តើមផ្តោតលើការយុវជនក្រោមអង្គការយុវជនជីវិតកម្ពុជា (YLC) ដែលឧទ្ទិសដល់ការផ្តល់អំណាចដល់និស្សិតសាកលវិទ្យាល័យនៅកម្ពុជា។",
+                modal_who_p2: "YLU ផ្តល់ឱកាសសម្រាប់សិស្សនិស្សិតក្នុងការពង្រឹងសមត្ថភាពសិក្សា អភិវឌ្ឍជំនាញភាពជាអ្នកដឹកនាំ ធ្វើឲ្យប្រសើរឡើងនូវជំនាញភាសា និងឌីជីថល កសាងអត្តចរិតរឹងមាំ និងស្វែងយល់ពីដំណឹងល្អនៅក្នុងសហគមន៍ដែលគាំទ្រគ្នា។",
+                tag_history: "ប្រវត្តិរបស់យើង",
+                modal_story_title: "រឿងរ៉ាវរបស់យើង",
+                founding_label: "កាលបរិច្ឆេទបង្កើត",
+                modal_founding_date: "២០ កក្កដា ២០២៤",
+                modal_story_p1: "YLU ត្រូវបានបង្កើតឡើងនៅថ្ងៃទី ២០ កក្កដា ២០២៤ ជាមួយនឹងចក្ខុវិស័យដើម្បីបង្កើតកន្លែងដ៏មានអត្ថន័យមួយដែលនិស្សិតសាកលវិទ្យាល័យអាចរៀនសូត្រ លូតលាស់ ភ្ជាប់ទំនាក់ទំនង និងអភិវឌ្ឍទាំងជំនាញ និងអត្តចរិតរបស់ពួកគេ។",
+                modal_story_p2: "ចាប់តាំងពីការចាប់ផ្តើមមក YLU បានធ្វើការគាំទ្រដល់សិស្សនិស្សិតតាមរយៈការអប់រំ ការអភិវឌ្ឍភាពជាអ្នកដឹកនាំ ជំនាញអនុវត្តជាក់ស្តែង និងសកម្មភាពផ្អែកលើជំនឿសាសនា។",
+                tag_faith: "ជំនឿស្នូល",
+                modal_believe_title: "អ្វីដែលយើងជឿជាក់",
+                modal_believe_p1: "យើងជឿជាក់ថាជីវិតនៅសាកលវិទ្យាល័យមិនមែនត្រឹមតែអំពីសមិទ្ធផលសិក្សានោះទេ។ វាក៏ជាឱកាសមួយដើម្បីអភិវឌ្ឍជំនាញ អត្តចរិត ភាពជាអ្នកដឹកនាំ និងជំនឿដែលអាចកំណត់រូបរាងជីវិតសិស្ស និងការចូលរួមចំណែករបស់ពួកគេចំពោះសង្គមជាតិផងដែរ។",
+                callout_mission: "គោលបំណងចម្បងរបស់យើង",
+                modal_highlight: "រៀនសូត្រ. លូតលាស់.<br class=\"hidden sm:inline\"> ដឹកនាំ. បម្រើ.",
+                footer_modal_brand: "សាកលវិទ្យាល័យ យុវជនជីវិត កម្ពុជា",
+                btn_close_story: "បិទ",
 
-  <!-- CTA -->
-  <section class="hero" style="padding-block: 3rem;">
-    <div class="wrap" style="grid-template-columns: 1fr; text-align:center; gap:1rem;">
-      <div>
-        <h2 style="color:var(--paper);">Ready to see the campus for yourself?</h2>
-        <p class="lede" style="margin-inline:auto;">Campus tours run every Wednesday afternoon and by appointment. Bring your questions — we'll bring the tea.</p>
-        <div class="hero-actions" style="justify-content:center;">
-          <a class="btn btn-gold" href="contact.html">Book a campus tour</a>
-        </div>
-      </div>
-    </div>
-  </section>
+                // Chatbot Strings
+                chat_title: "ជំនួយការសាកលវិទ្យាល័យ",
+                chat_welcome: "សួស្តី! ខ្ញុំគឺជាជំនួយការ AI របស់សាកលវិទ្យាល័យ។ តើអ្នកមានសំណួរអ្វីអំពីកម្មវិធីសិក្សា ជីវិតក្នុងសាលា ឬការចូលរៀនដែរឬទេ?",
+                chat_placeholder: "សួរសំណួរ..."
+            }
+        };
 
-</main>
+        let currentLang = 'en';
 
-<footer class="site-footer">
-  <div class="wrap footer-grid">
-    <div class="footer-brand">
-      <div class="brand-text">
-        <span class="en" style="color:var(--paper);">Young Life University</span>
-      </div>
-      <p class="km" style="margin-top:0.6em;">សកលវិទ្យាល័យជីវិតយុវជន — Phnom Penh, Cambodia</p>
-    </div>
-    <div>
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="academics.html">Academics</a></li>
-        <li><a href="admissions.html">Admissions</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="tel:+85523000000">+855 23 000 000</a></li>
-        <li><a href="mailto:info@ylu.edu.kh">info@ylu.edu.kh</a></li>
-        <li>Russey Keo, Phnom Penh</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Office hours</h4>
-      <ul>
-        <li>Mon–Fri, 7:00–17:00</li>
-        <li>Sat, 8:00–12:00</li>
-      </ul>
-    </div>
-  </div>
-  <div class="wrap footer-bottom">
-    <span>© 2026 Chaktomuk High School. All rights reserved.</span>
-    <span>Built as a student web-design project.</span>
-  </div>
-</footer>
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'km' : 'en';
 
-<script src="script.js"></script>
+            // Update Toggle Button Text
+            const dtText = currentLang === 'en' ? 'EN / ខ្មែរ' : 'ខ្មែរ / EN';
+            const mbText = currentLang === 'en' ? 'Switch to ខ្មែរ' : 'Switch to English';
+            document.getElementById('lang-text-desktop').textContent = dtText;
+            document.getElementById('lang-text-mobile').textContent = mbText;
+
+            // Apply Khmer font class to body
+            if (currentLang === 'km') {
+                document.body.classList.add('lang-km');
+            } else {
+                document.body.classList.remove('lang-km');
+            }
+
+            // Translate all elements with data-i18n attributes
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            // Update Input Placeholder
+            document.getElementById('chat-input').placeholder = translations[currentLang].chat_placeholder;
+
+            // Close mobile menu if open
+            if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                document.getElementById('mobile-menu-btn').click();
+            }
+        }
+
+        // --- GALAXY CANVAS ANIMATION ---
+        const canvas = document.getElementById('galaxy-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.opacity = Math.random();
+                this.fadeDirection = Math.random() < 0.5 ? 1 : -1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                this.opacity += 0.005 * this.fadeDirection;
+                if (this.opacity >= 1) this.fadeDirection = -1;
+                if (this.opacity <= 0.1) this.fadeDirection = 1;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            let numParticles = (canvas.width * canvas.height) / 10000;
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateGalaxy() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateGalaxy);
+        }
+
+        initParticles();
+        animateGalaxy();
+
+        // --- NAVBAR LOGIC ---
+        const navbar = document.getElementById('navbar');
+        const navText = document.getElementById('nav-text');
+        const navDivider = document.getElementById('nav-divider');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.remove('bg-transparent', 'py-5');
+                navText.classList.remove('text-white');
+                navText.classList.add('text-slate-900');
+                if (navDivider) navDivider.classList.replace('bg-white/30', 'bg-slate-300');
+                navLinks.forEach(link => { link.classList.remove('text-white'); link.classList.add('text-slate-700'); });
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.add('bg-transparent', 'py-5');
+                if (window.innerWidth >= 1024) {
+                    navText.classList.remove('text-slate-900');
+                    navText.classList.add('text-white');
+                    if (navDivider) navDivider.classList.replace('bg-slate-300', 'bg-white/30');
+                    navLinks.forEach(link => { link.classList.remove('text-slate-700'); link.classList.add('text-white'); });
+                }
+            }
+        });
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconCloseNav = document.getElementById('icon-close');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            iconMenu.classList.toggle('hidden');
+            iconCloseNav.classList.toggle('hidden');
+        });
+
+        // --- OUR STORY MODAL LOGIC ---
+        const storyModal = document.getElementById('story-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(e) {
+            if (e) e.preventDefault();
+            storyModal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                storyModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        document.getElementById('link-about').addEventListener('click', openModal);
+        document.getElementById('mobile-about-link').addEventListener('click', (e) => {
+            openModal(e);
+            menuBtn.click();
+        });
+
+        // --- AI CHATBOT LOGIC ---
+        const chatToggleBtn = document.getElementById('chatbot-toggle');
+        const chatCloseBtn = document.getElementById('chat-close');
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendBtn = document.getElementById('chat-send');
+        const chatMessages = document.getElementById('chat-messages');
+
+        function toggleChat() {
+            chatWindow.classList.toggle('hidden');
+            document.getElementById('chat-icon-open').classList.toggle('hidden');
+            document.getElementById('chat-icon-close').classList.toggle('hidden');
+            if (!chatWindow.classList.contains('hidden')) chatInput.focus();
+        }
+        chatToggleBtn.addEventListener('click', toggleChat);
+        chatCloseBtn.addEventListener('click', toggleChat);
+
+        async function fetchGeminiResponse(userMessage) {
+            const apiKey = ""; // Injected by runtime
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const languageContext = currentLang === 'km' ? 'Please reply entirely in the Khmer language.' : 'Please reply in English.';
+
+            const systemPrompt = `You are a helpful and friendly admissions assistant for Younglife University, Cambodia. 
+            Always refer to the institution as Younglife University, Cambodia.
+            Your tone is welcoming, encouraging, and professional. 
+            Keep answers concise (1-3 sentences).
+            The university was established on 20 July 2024 and focuses on academic excellence, faith & purpose, leadership development, and vibrant community: Learn, Grow, Lead, Serve.
+            ${languageContext}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userMessage }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const maxRetries = 4;
+            const delays = [1000, 2000, 4000, 8000];
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't understand that.";
+                } catch (error) {
+                    if (i === maxRetries - 1) return currentLang === 'km' ? "សុំទោស ខ្ញុំមានបញ្ហាក្នុងការតភ្ជាប់។ សូមព្យាយាមម្តងទៀត។" : "Sorry, connection failed. Please try again.";
+                    await new Promise(resolve => setTimeout(resolve, delays[i]));
+                }
+            }
+        }
+
+        function appendMessage(text, isUser = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `p-3.5 rounded-2xl text-sm shadow-sm message-anim max-w-[85%] font-medium ${isUser
+                    ? 'bg-slate-900 text-white rounded-tr-sm self-end shadow-md'
+                    : 'bg-white border border-slate-100 text-slate-700 rounded-tl-sm self-start'
+                }`;
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'bg-white border border-slate-100 text-slate-700 p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm message-anim flex gap-1.5 items-center h-11';
+            typingDiv.innerHTML = `
+                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        async function handleSend() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            chatInput.value = '';
+            appendMessage(text, true);
+            showTypingIndicator();
+
+            const responseText = await fetchGeminiResponse(text);
+
+            removeTypingIndicator();
+            appendMessage(responseText, false);
+        }
+
+        chatSendBtn.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+    </script>
 </body>
+
 </html>
